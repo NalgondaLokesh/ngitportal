@@ -3,6 +3,7 @@ import { db } from "./firebase";
 import { collection, getDocs, query, where, doc, updateDoc, deleteDoc } from "firebase/firestore";
 import { useAuth } from "./AuthContext";
 import { useNavigate } from "react-router-dom";
+import "./Profile.css";
 
 function Profile() {
   const { user, role, logout } = useAuth();
@@ -111,29 +112,38 @@ function Profile() {
 
   return (
     <div className="profile-bg min-vh-100 d-flex align-items-center justify-content-center">
-      <div className="neon-events-container" style={{ maxWidth: 700, width: '100%', margin: '2rem auto', padding: '2.5rem 2rem' }}>
-        <div className="neon-profile-mainbox" style={{ marginBottom: '2.2rem', textAlign: 'center' }}>
-          <div className="neon-profile-avatar">
+      <div className="dark-mode-container" style={{ maxWidth: 700, width: '100%', margin: '2rem auto' }}>
+        <div className="dark-mode-cardbox" style={{
+          marginBottom: '2.2rem',
+          textAlign: 'center',
+          border: '1px solid #00ffe7',
+          borderRadius: '10px',
+          padding: '20px',
+          background: 'linear-gradient(145deg, #06002E, #1a004f)',
+          boxShadow: '0 0 15px rgba(0, 255, 231, 0.3), 0 0 15px rgba(255, 0, 230, 0.3)',
+        }}>
+          <div className="dark-mode-avatar">
+            {/* Reverted to displaying initials only */}
             {getInitials(user.email)}
           </div>
-          <h2 className="neon-profile-title">{user.email.split('@')[0]}</h2>
+          <h2 className="dark-mode-title">{user.email.split('@')[0]}</h2>
           <div style={{ display: 'flex', justifyContent: 'center', gap: '2rem', marginTop: '1.5rem' }}>
             <div>
-              <span className="neon-profile-label">EMAIL</span>
+              <span className="dark-mode-label">EMAIL</span>
               <p style={{ marginTop: '0.5rem' }}>{user.email}</p>
             </div>
             <div>
-              <span className="neon-profile-label">ROLE</span>
+              <span className="dark-mode-label">ROLE</span>
               <p style={{ marginTop: '0.5rem' }}>{role.charAt(0).toUpperCase() + role.slice(1)}</p>
             </div>
           </div>
         </div>
         
-        <hr className="neon-section-divider" style={{ background: 'linear-gradient(90deg, #00ffe7 0%, #ff00e6 100%)', height: '2px', opacity: 0.6 }} />
+        <hr className="dark-mode-section-divider" />
         
         {role === "user" && (
-          <div className="neon-profile-cardbox">
-            <h3 className="neon-text mb-4" style={{fontSize: '1.5rem', color: '#00ffe7', textShadow: '0 0 8px #00ffe7, 0 0 16px #ff00e6', fontWeight: 'bold', textAlign: 'center'}}>
+          <div className="dark-mode-cardbox">
+            <h3 className="dark-mode-title" style={{fontSize: '1.5rem', marginBottom: '1.5rem'}}>
               <i className="bi bi-calendar-check" style={{marginRight: '10px'}}></i>
               Your Registered Events
             </h3>
@@ -149,20 +159,12 @@ function Profile() {
                 <p>You have not registered for any events yet.</p>
               </div>
             ) : (
-              <ul className="neon-profile-list">
+              <ul className="dark-mode-list">
                 {registeredEvents.map((ev, index) => (
-                  <li key={ev.id} style={{
-                    background: `linear-gradient(135deg, rgba(${index * 30 % 255}, ${index * 50 % 255}, ${index * 70 % 255}, 0.6), rgba(${index * 40 % 255}, ${index * 60 % 255}, ${index * 80 % 255}, 0.6))`, // Dynamic colorful background
-                    borderRadius: '1rem',
-                    padding: '1.2rem',
-                    marginBottom: '1rem',
-                    boxShadow: `0 0 15px rgba(${index * 30 % 255}, ${index * 50 % 255}, ${index * 70 % 255}, 0.4)`,
-                    border: `1px solid rgba(${index * 40 % 255}, ${index * 60 % 255}, ${index * 80 % 255}, 0.3)`,
-                    transition: 'all 0.3s ease'
-                  }}>
-                    <h4 style={{color: '#00ffe7', textShadow: '0 0 8px #00ffe7', marginBottom: '0.5rem'}}>{ev.title}</h4>
-                    <p style={{color: '#fff', opacity: 0.9, marginBottom: '0.5rem'}}>{ev.description}</p>
-                    <div style={{display: 'flex', alignItems: 'center', color: '#ff00e6', fontSize: '0.9rem'}}>
+                  <li key={ev.id}>
+                    <h4 className="dark-mode-title" style={{textAlign: 'left'}}>{ev.title}</h4>
+                    <p>{ev.description}</p>
+                    <div style={{display: 'flex', alignItems: 'center'}}>
                       <i className="bi bi-clock" style={{marginRight: '6px'}}></i>
                       {new Date(ev.date.seconds ? ev.date.seconds * 1000 : ev.date).toLocaleString()}
                     </div>
@@ -174,8 +176,8 @@ function Profile() {
         )}
         
         {role === "coordinator" && (
-          <div className="neon-profile-cardbox">
-            <h3 className="neon-text mb-4" style={{fontSize: '1.5rem', color: '#00ffe7', textShadow: '0 0 8px #00ffe7, 0 0 16px #ff00e6', fontWeight: 'bold', textAlign: 'center'}}>
+          <div className="dark-mode-cardbox">
+            <h3 className="dark-mode-title" style={{fontSize: '1.5rem', marginBottom: '1.5rem'}}>
               <i className="bi bi-calendar-plus" style={{marginRight: '10px'}}></i>
               Events You Created
             </h3>
@@ -191,17 +193,9 @@ function Profile() {
                 <p>You have not created any events yet.</p>
               </div>
             ) : (
-              <ul className="neon-profile-list">
+              <ul className="dark-mode-list">
                 {createdEvents.map((ev, index) => (
-                  <li key={ev.id} style={{
-                    background: `linear-gradient(135deg, rgba(${index * 50 % 255}, ${index * 70 % 255}, ${index * 30 % 255}, 0.6), rgba(${index * 60 % 255}, ${index * 80 % 255}, ${index * 40 % 255}, 0.6))`, // Dynamic colorful background
-                    borderRadius: '1rem',
-                    padding: '1.2rem',
-                    marginBottom: '1rem',
-                    boxShadow: `0 0 15px rgba(${index * 50 % 255}, ${index * 70 % 255}, ${index * 30 % 255}, 0.4)`,
-                    border: `1px solid rgba(${index * 60 % 255}, ${index * 80 % 255}, ${index * 40 % 255}, 0.3)`,
-                    transition: 'all 0.3s ease'
-                  }}>
+                  <li key={ev.id}>
                     {editingEventId === ev.id ? (
                       <form
                         onSubmit={e => {
@@ -217,7 +211,7 @@ function Profile() {
                           onChange={handleEditChange}
                           required
                           placeholder="Event Title"
-                          className="form-control neon-input mb-2"
+                          className="dark-mode-input"
                         />
                         <textarea
                           name="description"
@@ -225,7 +219,7 @@ function Profile() {
                           onChange={handleEditChange}
                           required
                           placeholder="Description"
-                          className="form-control neon-input mb-2"
+                          className="dark-mode-input"
                         />
                         <input
                           type="datetime-local"
@@ -233,30 +227,31 @@ function Profile() {
                           value={editForm.date}
                           onChange={handleEditChange}
                           required
-                          className="form-control neon-input mb-2"
+                          className="dark-mode-input"
                         />
                         <div style={{display: 'flex', gap: '10px'}}>
-                          <button type="submit" className="neon-profile-btn">
+                          <button type="submit" className="dark-mode-btn">
                             <i className="bi bi-check-circle" style={{marginRight: '5px'}}></i>Save
                           </button>
-                          <button type="button" className="neon-profile-btn" onClick={() => setEditingEventId(null)}>
+                          <button type="button" className="dark-mode-btn" onClick={() => setEditingEventId(null)} style={{background: '#555'}}>
                             <i className="bi bi-x-circle" style={{marginRight: '5px'}}></i>Cancel
                           </button>
                         </div>
                       </form>
                     ) : (
                       <>
-                        <h4 style={{color: '#00ffe7', textShadow: '0 0 8px #00ffe7', marginBottom: '0.5rem'}}>{ev.title}</h4>
-                        <p style={{color: '#fff', opacity: 0.9, marginBottom: '0.5rem'}}>{ev.description}</p>
-                        <div style={{display: 'flex', alignItems: 'center', color: '#ff00e6', fontSize: '0.9rem', marginBottom: '1rem'}}>
+                        <h4 className="dark-mode-title" style={{textAlign: 'left'}}>{ev.title}</h4>
+                        <p>{ev.description}</p>
+                        <div className="event-details" style={{display: 'flex', alignItems: 'center', marginBottom: '1rem'}}>
                           <i className="bi bi-clock" style={{marginRight: '6px'}}></i>
                           {new Date(ev.date.seconds ? ev.date.seconds * 1000 : ev.date).toLocaleString()}
                         </div>
+                        <p className="created-by-text">Created by: {ev.createdBy}</p>
                         <div style={{display: 'flex', gap: '10px'}}>
-                          <button className="neon-profile-btn" onClick={() => handleEditStart(ev)}>
+                          <button className="dark-mode-btn" onClick={() => handleEditStart(ev)}>
                             <i className="bi bi-pencil" style={{marginRight: '5px'}}></i>Edit
                           </button>
-                          <button className="neon-profile-btn" onClick={() => handleDelete(ev.id)} style={{background: 'linear-gradient(90deg, #ff0033 0%, #ff00e6 100%)'}}>
+                          <button className="dark-mode-btn" onClick={() => handleDelete(ev.id)} style={{background: '#dc3545', color: 'white'}}>
                             <i className="bi bi-trash" style={{marginRight: '5px'}}></i>Delete
                           </button>
                         </div>

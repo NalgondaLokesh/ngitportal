@@ -115,8 +115,8 @@ function EventList() {
     </div>
   );
 
-  // Filter out 'Hackathon 1' from the events list
-  const filteredEvents = events.filter(ev => ev.title !== 'Hackathon 1');
+  // Filter out 'Hackathon 1' and 'nice one' from the events list
+  const filteredEvents = events.filter(ev => ev.title !== 'Hackathon 1' && ev.title !== 'nice one');
 
   // Find the next upcoming event (by soonest date)
   const now = new Date();
@@ -176,36 +176,40 @@ function EventList() {
         {filteredEvents.map((ev) => {
           const isNext = ev.id === nextEventId;
           return (
-            <li key={ev.id} className="neon-event-item" style={isNext ? {border:'2.5px solid #ff00e6',boxShadow:'0 0 32px #ff00e6, 0 0 48px #00ffe7',animation:'pulse-glow 1.5s infinite alternate'} : {}}>
-              <div style={{display:'flex',alignItems:'center',gap:'1em',marginBottom:'0.5em'}}>
-                <i className="bi bi-calendar-event" style={{fontSize:'2em',color:'#00ffe7',textShadow:'0 0 8px #ff00e6'}}></i>
-                <span className="neon-event-title">{ev.title}</span>
-                {isNext && <span style={{marginLeft:8,padding:'0.2em 0.7em',background:'linear-gradient(90deg,#ff00e6 0%,#00ffe7 100%)',color:'#06002E',borderRadius:'0.5em',fontWeight:'bold',fontSize:'0.95em',boxShadow:'0 0 8px #ff00e6'}}>Next Up</span>}
+            <li key={ev.id} className="neon-event-item" style={{
+              ...isNext ? {border:'2.5px solid #ff00e6',boxShadow:'0 0 32px #ff00e6, 0 0 48px #00ffe7',animation:'pulse-glow 1.5s infinite alternate'} : {},
+              border: '1px solid #00ffe7',
+              borderRadius: '10px',
+              padding: '20px',
+              marginBottom: '20px',
+              background: 'linear-gradient(145deg, #06002E, #1a004f)',
+              boxShadow: '0 0 15px rgba(0, 255, 231, 0.3), 0 0 15px rgba(255, 0, 230, 0.3)',
+              display: 'flex',
+              flexDirection: 'column',
+              justifyContent: 'space-between'
+            }}>
+              <div style={{marginBottom: '15px'}}>
+                <h3 className="neon-event-title" style={{ color: '#00ffe7', textShadow: '0 0 8px #00ffe7, 0 0 16px #ff00e6', marginBottom: '5px' }}>{ev.title}</h3>
+                <p className="neon-subtext" style={{ color: '#ffffff99', fontSize: '0.9em', marginBottom: '5px' }}>{ev.description}</p>
+                <p className="neon-event-date" style={{ color: '#ffffffcc', fontSize: '0.9em', marginBottom: '5px' }}>
+                  Date: {new Date(ev.date.seconds ? ev.date.seconds * 1000 : ev.date).toLocaleString()}
+                </p>
+                <p className="neon-subtext" style={{ color: '#ffffffcc', fontSize: '0.9em', marginBottom: '15px' }}>
+                  Created by: {ev.createdBy}
+                </p>
+                <p className="neon-event-regcount" style={{ color: '#ff00e6', textShadow: '0 0 8px #ff00e6, 0 0 16px #00ffe7', fontWeight: 'bold' }}>
+                  Registered Students: {regCounts[ev.id] ?? 0}
+                </p>
               </div>
-              <span className="neon-subtext">{ev.description}</span><br />
-              <span className="neon-event-date">
-                <i className="bi bi-clock" style={{marginRight:4}}></i>
-                {new Date(ev.date.seconds ? ev.date.seconds * 1000 : ev.date).toLocaleString()}
-              </span><br />
-              <span className="neon-subtext">
-                <i className="bi bi-person-circle" style={{marginRight:4}}></i>
-                Created by: {ev.createdBy}
-              </span><br />
-              {/* Registration count visible to everyone */}
-              <span className="neon-event-regcount">
-                <i className="bi bi-people-fill" style={{marginRight:4}}></i>
-                Registered Students: {regCounts[ev.id] ?? 0}
-              </span>
-              <br />
 
               {user && role === "user" && (
                 <>
                   {rsvpStatus[ev.id] ? (
-                    <button onClick={() => handleUnregister(ev.id)} className="neon-event-btn" style={{ color: "#fff", background: "#ff0033" }}>
+                    <button onClick={() => handleUnregister(ev.id)} className="neon-event-btn" style={{ color: "#fff", background: "#ff0033", border: 'none', borderRadius: '5px', padding: '10px 20px', cursor: 'pointer', fontSize: '1em' }}>
                       <i className="bi bi-x-circle" style={{marginRight:4}}></i>Unregister
                     </button>
                   ) : (
-                    <button onClick={() => handleRSVP(ev.id)} className="neon-event-btn">
+                    <button onClick={() => handleRSVP(ev.id)} className="neon-event-btn" style={{ background: 'linear-gradient(90deg, #00ffe7 0%, #ff00e6 100%)', color: '#06002E', border: 'none', borderRadius: '5px', padding: '10px 20px', cursor: 'pointer', fontSize: '1em', fontWeight: 'bold' }}>
                       <i className="bi bi-check-circle" style={{marginRight:4}}></i>Register for Event
                     </button>
                   )}
@@ -214,20 +218,20 @@ function EventList() {
 
               {user && role === "coordinator" && (
                 <>
-                  <button onClick={() => handleViewRegistrations(ev.id)} className="neon-event-btn">
+                  <button onClick={() => handleViewRegistrations(ev.id)} className="neon-event-btn" style={{ background: 'linear-gradient(90deg, #00ffe7 0%, #ff00e6 100%)', color: '#06002E', border: 'none', borderRadius: '5px', padding: '10px 20px', cursor: 'pointer', fontSize: '1em', fontWeight: 'bold' }}>
                     <i className="bi bi-list-check" style={{marginRight:4}}></i>{openEvent === ev.id ? "Hide Registrations" : "View Registrations"}
                   </button>
                   {openEvent === ev.id && (
-                    <div className="neon-event-registrations">
-                      <strong>Registrations:</strong>
+                    <div className="neon-event-registrations" style={{ marginTop: '15px', paddingTop: '15px', borderTop: '1px solid #ffffff33' }}>
+                      <strong style={{ color: '#00ffe7' }}>Registrations:</strong>
                       {registrations[ev.id] && registrations[ev.id].length > 0 ? (
-                        <ul>
+                        <ul style={{ listStyle: 'none', padding: 0, marginTop: '10px' }}>
                           {registrations[ev.id].map((reg, idx) => (
-                            <li key={idx}><i className="bi bi-person-badge" style={{marginRight:4}}></i>{reg.email} (UserID: {reg.userId})</li>
+                            <li key={idx} style={{ color: '#ffffffcc', marginBottom: '5px' }}><i className="bi bi-person-badge" style={{marginRight:4}}></i>{reg.email}</li>
                           ))}
                         </ul>
                       ) : (
-                        <p>No registrations yet.</p>
+                        <p style={{ color: '#ffffff99' }}>No registrations yet.</p>
                       )}
                     </div>
                   )}

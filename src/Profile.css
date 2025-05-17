@@ -1,0 +1,145 @@
+/* src/Profile.css */
+
+.dark-mode-container {
+  border-radius: 8px;
+  background-color: #1e1e1e;
+  padding: 2rem;
+  color: #ffffff;
+  transition: background-color 0.5s ease;
+}
+
+.dark-mode-container:hover {
+  background-color: #2a2a2a; /* Slightly lighter dark background on hover */
+}
+
+.dark-mode-cardbox {
+  border-radius: 6px;
+  background-color: #252526;
+  padding: 1.5rem;
+  margin-bottom: 1.5rem;
+  border: 1px solid #333;
+}
+
+.dark-mode-avatar {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  background-color: #3c3c3c;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.8rem;
+  font-weight: bold;
+  color: #cccccc;
+  margin: 0 auto 1.5rem auto;
+  border: 1px solid #555;
+}
+
+.dark-mode-title {
+  color: #ffffff;
+  text-align: center;
+  margin-bottom: 1rem;
+  font-size: 1.8rem;
+}
+
+.dark-mode-label {
+  color: #bbbbbb;
+  font-size: 0.8rem;
+  font-weight: bold;
+  display: block;
+  text-align: center;
+  text-transform: uppercase;
+  margin-bottom: 0.3rem;
+}
+
+.dark-mode-list li {
+  border-radius: 10px;
+  background-color: #2d2d30;
+  padding: 1.2rem 1.5rem; /* Adjusted padding */
+  margin-bottom: 1rem;
+  border: 1px solid #444;
+  transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem; /* Reduced gap */
+}
+
+.dark-mode-list li:hover {
+  transform: translateY(-5px);
+}
+
+.dark-mode-list h4 {
+  color: #ffffff;
+  margin-bottom: 0;
+  font-size: 1.2rem; /* Slightly reduced font size */
+  font-weight: 600;
+}
+
+.dark-mode-list p {
+  color: #cccccc;
+  opacity: 0.9;
+  margin-bottom: 0;
+  font-size: 0.95rem; /* Slightly reduced font size */
+  line-height: 1.4;
+}
+
+.dark-mode-list .event-date {
+  color: #bbbbbb;
+  font-size: 0.85rem; /* Slightly reduced font size */
+  display: flex;
+  align-items: center;
+  margin-top: 0.4rem; /* Added margin top for separation */
+}
+
+.dark-mode-list .event-date i {
+  margin-right: 6px; /* Adjusted margin */
+}
+
+.dark-mode-input {
+  border: 1px solid #555;
+  outline: none;
+  border-radius: 5px;
+  padding: 0.6rem;
+  margin-bottom: 1rem;
+  width: 100%;
+  font-size: 0.9rem;
+  background-color: #3c3c3c;
+  color: #ffffff;
+}
+
+.dark-mode-input::placeholder {
+  color: #888;
+}
+
+.dark-mode-btn {
+  border: none;
+  outline: none;
+  border-radius: 5px;
+  padding: 0.6rem 1.2rem;
+  background-color: #007acc;
+  color: white;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+  font-size: 0.9rem;
+}
+
+.dark-mode-btn:hover {
+  background-color: #005f99;
+}
+
+.dark-mode-btn:active {
+  background-color: #004c7a;
+}
+
+.dark-mode-section-divider {
+  height: 1px;
+  background-color: #555;
+  opacity: 1;
+  margin: 2rem 0;
+}
+
+.created-by-text {
+  color: #ffffff; /* Change text color to white */
+  font-size: 0.9rem;
+  margin-top: 0.5rem; /* Add some space above */
+}
