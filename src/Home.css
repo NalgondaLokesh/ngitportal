@@ -1,0 +1,101 @@
+/* Neon-styled background */
+.home-neon-bg {
+    background: linear-gradient(135deg, #06002E 0%, #0e1456 100%);
+    min-height: 100vh;
+    font-family: 'Orbitron', 'Segoe UI', 'Arial', sans-serif;
+  }
+  
+  /* Neon overlay for hero and CTA */
+  .neon-overlay,
+  .neon-overlay-bottom {
+    background: rgba(0,0,0,0.50);
+    border-radius: 1.5rem;
+    margin: 2rem auto;
+    max-width: 900px;
+    box-shadow: 0 0 32px 2px #00ffe7a0, 0 0 16px 2px #ff00e6a0;
+  }
+  
+  .neon-overlay-bottom {
+    background: rgba(0,0,0,0.65);
+  }
+  
+  /* Neon text effect */
+  .neon-text {
+    color: #00ffe7;
+    text-shadow:
+      0 0 5px #00ffe7,
+      0 0 10px #00ffe7,
+      0 0 20px #ff00e6,
+      0 0 40px #ff00e6;
+  }
+  
+  .neon-subtext {
+    color: #f0f0f0;
+    text-shadow: 0 0 8px #00ffe7a0;
+    font-size: 1.15rem;
+  }
+  
+  .neon-highlight {
+    color: #ff00e6;
+    text-shadow: 0 0 6px #ff00e6, 0 0 12px #00ffe7;
+    font-weight: 600;
+  }
+  
+  /* Neon card effect */
+  .neon-card {
+    background: rgba(30, 0, 60, 0.92);
+    border-radius: 1rem;
+    box-shadow: 0 0 24px 2px #00ffe7a0, 0 0 12px 2px #ff00e6a0;
+    transition: transform 0.2s, box-shadow 0.2s;
+  }
+  
+  .neon-card:hover {
+    transform: translateY(-5px) scale(1.03);
+    box-shadow: 0 0 32px 6px #00ffe7cc, 0 0 24px 8px #ff00e6cc;
+  }
+  
+  /* Neon icons */
+  .neon-icon {
+    color: #ff00e6;
+    text-shadow: 0 0 10px #ff00e6, 0 0 12px #00ffe7;
+  }
+  
+  /* Neon buttons */
+  .btn-neon {
+    color: #06002E;
+    background: linear-gradient(90deg, #00ffe7 0%, #ff00e6 100%);
+    border: none;
+    font-weight: bold;
+    box-shadow: 0 0 8px #00ffe7, 0 0 16px #ff00e6;
+    transition: background 0.2s, color 0.2s, box-shadow 0.2s;
+  }
+  
+  .btn-neon:hover, .btn-neon:focus {
+    color: #fff;
+    background: linear-gradient(90deg, #ff00e6 0%, #00ffe7 100%);
+    box-shadow: 0 0 16px #ff00e6, 0 0 32px #00ffe7;
+  }
+  
+  .btn-outline-neon {
+    color: #ff00e6;
+    border: 2px solid #ff00e6;
+    background: transparent;
+    font-weight: bold;
+    box-shadow: 0 0 8px #ff00e6;
+    transition: background 0.2s, color 0.2s, box-shadow 0.2s;
+  }
+  
+  .btn-outline-neon:hover, .btn-outline-neon:focus {
+    color: #fff;
+    background: #ff00e6;
+    box-shadow: 0 0 16px #ff00e6, 0 0 32px #00ffe7;
+  }
+  
+  /* Responsive adjustments */
+  @media (max-width: 767px) {
+    .neon-overlay,
+    .neon-overlay-bottom {
+      padding: 1.25rem 0.75rem;
+      max-width: 98vw;
+    }
+  }

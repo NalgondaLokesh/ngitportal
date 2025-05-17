@@ -1,0 +1,74 @@
+.neon-navbar {
+  background: rgba(10, 0, 40, 0.97);
+  box-shadow: 0 0 16px #00ffe7cc, 0 0 8px #ff00e6cc;
+  border-bottom: 1.5px solid #00ffe7cc;
+  font-family: 'Orbitron', 'Segoe UI', sans-serif;
+  padding-top: 0.3rem;
+  padding-bottom: 0.3rem;
+}
+
+.neon-navbar-brand {
+  color: #00ffe7 !important;
+  font-weight: bold;
+  font-size: 1.6rem;
+  letter-spacing: 1px;
+  text-shadow:
+    0 0 8px #00ffe7,
+    0 0 2px #ff00e6;
+  transition: color 0.2s;
+}
+
+.neon-navbar-brand:hover {
+  color: #ff00e6 !important;
+  text-shadow: 0 0 12px #ff00e6, 0 0 6px #00ffe7;
+}
+
+.neon-link {
+  color: #fff !important;
+  font-weight: 500;
+  margin-left: 1rem;
+  margin-right: 1rem;
+  text-shadow: 0 0 8px #00ffe7a0;
+  border-bottom: 2px solid transparent;
+  transition: color 0.2s, border-bottom 0.2s, text-shadow 0.2s;
+}
+
+.neon-link.active,
+.neon-link:hover,
+.neon-link:focus {
+  color: #00ffe7 !important;
+  border-bottom: 2.5px solid #ff00e6;
+  text-shadow: 0 0 12px #ff00e6, 0 0 6px #00ffe7;
+  background: none !important;
+}
+
+.neon-toggler {
+  border: 1.5px solid #00ffe7;
+}
+
+.navbar-toggler-icon {
+  background-image: none;
+  width: 1.8em;
+  height: 1.8em;
+  position: relative;
+}
+.navbar-toggler-icon::before, .navbar-toggler-icon::after, .navbar-toggler-icon {
+  content: "";
+  display: block;
+  height: 3px;
+  width: 100%;
+  background: linear-gradient(90deg,#00ffe7 0%,#ff00e6 100%);
+  box-shadow: 0 0 8px #00ffe7, 0 0 4px #ff00e6;
+  margin: 0.3em 0;
+  border-radius: 2px;
+}
+
+@media (max-width: 991px) {
+  .neon-navbar-brand {
+    font-size: 1.15rem;
+  }
+  .neon-link {
+    margin-left: 0.5rem;
+    margin-right: 0.5rem;
+  }
+}

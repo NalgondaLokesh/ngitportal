@@ -1,0 +1,372 @@
+/* Neon-styled background for Create Event */
+.create-event-bg {
+  background: linear-gradient(135deg, #06002E 0%, #0e1456 100%);
+  min-height: 100vh;
+  font-family: 'Orbitron', 'Segoe UI', 'Arial', sans-serif;
+}
+
+/* Neon card reused from signup */
+.neon-signup-card {
+  background: rgba(20, 0, 50, 0.98);
+  border-radius: 1.5rem;
+  box-shadow: 0 0 32px 3px #00ffe7a0, 0 0 16px 2px #ff00e6a0;
+  max-width: 400px;
+  width: 100%;
+  margin: 2rem;
+}
+
+.neon-text {
+  color: #00ffe7;
+  text-shadow: 0 0 5px #00ffe7, 0 0 10px #ff00e6, 0 0 20px #ff00e6;
+  font-family: 'Orbitron', 'Segoe UI', sans-serif;
+  letter-spacing: 2px;
+}
+
+.neon-subtext {
+  color: #f0f0f0;
+  text-shadow: 0 0 8px #00ffe7a0;
+  font-size: 1.07rem;
+}
+
+.neon-input {
+  background: #0e1456;
+  color: #fff;
+  border: 1.5px solid #00ffe7;
+  border-radius: 0.5rem;
+  box-shadow: 0 0 5px #00ffe7a0 inset;
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+.neon-input:focus {
+  border-color: #ff00e6;
+  box-shadow: 0 0 8px #ff00e6a0, 0 0 16px #00ffe7a0;
+  background: #151a49;
+  color: #fff;
+}
+
+.btn-neon {
+  color: #06002E;
+  background: linear-gradient(90deg, #00ffe7 0%, #ff00e6 100%);
+  border: none;
+  font-weight: bold;
+  box-shadow: 0 0 8px #00ffe7, 0 0 16px #ff00e6;
+  transition: background 0.2s, color 0.2s, box-shadow 0.2s;
+}
+
+.btn-neon:hover, .btn-neon:focus {
+  color: #fff;
+  background: linear-gradient(90deg, #ff00e6 0%, #00ffe7 100%);
+  box-shadow: 0 0 16px #ff00e6, 0 0 32px #00ffe7;
+}
+
+/* Neon-styled background for Profile */
+.profile-bg {
+  background: linear-gradient(135deg, #06002E 0%, #0e1456 100%);
+  min-height: 100vh;
+  font-family: 'Orbitron', 'Segoe UI', 'Arial', sans-serif;
+}
+
+.neon-profile-card {
+  background: rgba(20, 0, 50, 0.98);
+  border-radius: 1.5rem;
+  box-shadow: 0 0 32px 3px #00ffe7a0, 0 0 16px 2px #ff00e6a0;
+  max-width: 500px;
+  width: 100%;
+  margin: 2rem auto;
+  padding: 2rem 2.5rem;
+  animation: neon-border 2.5s infinite alternate;
+}
+
+.neon-profile-title {
+  color: #00ffe7;
+  text-shadow: 0 0 5px #00ffe7, 0 0 10px #ff00e6, 0 0 20px #ff00e6;
+  font-family: 'Orbitron', 'Segoe UI', sans-serif;
+  letter-spacing: 2px;
+  text-align: center;
+  margin-bottom: 1.5rem;
+  font-size: 2rem;
+}
+
+.neon-profile-label {
+  color: #ff00e6;
+  font-weight: bold;
+  text-shadow: 0 0 6px #ff00e6, 0 0 12px #00ffe7;
+}
+
+.neon-profile-section {
+  background: rgba(30, 0, 60, 0.92);
+  border-radius: 1rem;
+  box-shadow: 0 0 24px 2px #00ffe7a0, 0 0 12px 2px #ff00e6a0;
+  padding: 1.2rem 1rem;
+  margin-bottom: 1.5rem;
+}
+
+.neon-profile-list {
+  list-style: none;
+  padding-left: 0;
+}
+
+.neon-profile-list li {
+  margin-bottom: 1.2em;
+  background: rgba(0,0,0,0.15);
+  border-radius: 0.5rem;
+  padding: 0.7em 1em;
+  box-shadow: 0 0 8px #00ffe7a0;
+}
+
+.neon-profile-list li:hover {
+  box-shadow: 0 0 24px #ff00e6, 0 0 32px #00ffe7;
+  background: rgba(0,0,0,0.22);
+  transition: box-shadow 0.2s, background 0.2s;
+}
+
+/* Neon avatar circle for profile */
+.neon-profile-avatar {
+  width: 70px;
+  height: 70px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #00ffe7 0%, #ff00e6 100%);
+  box-shadow: 0 0 16px #00ffe7, 0 0 8px #ff00e6;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 1.2rem auto;
+  font-size: 2.2rem;
+  color: #06002E;
+  font-weight: bold;
+  text-shadow: 0 0 8px #fff;
+  letter-spacing: 1px;
+}
+
+/* Section divider with neon line */
+.neon-section-divider {
+  border: none;
+  border-top: 2px solid #00ffe7;
+  margin: 2rem 0 1.5rem 0;
+  box-shadow: 0 0 8px #00ffe7a0;
+}
+
+/* Subtle neon glow on hover for event list items */
+.neon-profile-list li:hover {
+  box-shadow: 0 2px 8px 0 #d1d9e6;
+  background: #f5f6fa;
+  transition: box-shadow 0.2s, background 0.2s;
+}
+
+.neon-profile-btn {
+  color: #fff;
+  background: linear-gradient(90deg, #00ffe7 0%, #ff00e6 100%);
+  border: none;
+  font-weight: bold;
+  border-radius: 0.5rem;
+  box-shadow: 0 0 8px #00ffe7, 0 0 16px #ff00e6;
+  margin-right: 0.7em;
+  margin-top: 0.3em;
+  margin-bottom: 0.3em;
+  padding: 0.4em 1.1em;
+  transition: background 0.2s, color 0.2s, box-shadow 0.2s, transform 0.15s;
+}
+
+.neon-profile-btn:hover, .neon-profile-btn:focus {
+  color: #fff;
+  background: linear-gradient(90deg, #ff00e6 0%, #00ffe7 100%);
+  box-shadow: 0 0 16px #ff00e6, 0 0 32px #00ffe7;
+  transform: scale(1.04);
+}
+
+/* Neon styles for Upcoming Events (EventList) */
+.neon-events-container {
+  background: rgba(20, 0, 50, 0.98);
+  border-radius: 1.5rem;
+  box-shadow: 0 0 32px 3px #00ffe7a0, 0 0 16px 2px #ff00e6a0;
+  max-width: 700px;
+  width: 100%;
+  margin: 2rem auto;
+  padding: 2.5rem 2rem;
+}
+
+.neon-events-title {
+  color: #00ffe7;
+  text-shadow: 0 0 8px #00ffe7, 0 0 16px #ff00e6;
+  font-family: 'Orbitron', 'Segoe UI', sans-serif;
+  letter-spacing: 2px;
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+/* --- Enhanced Neon Event List Styles --- */
+.neon-event-list {
+  list-style: none;
+  padding-left: 0;
+  margin: 0;
+}
+
+.neon-event-item {
+  background: rgba(0,0,0,0.18);
+  border-radius: 1rem;
+  margin-bottom: 2em;
+  padding: 1.2em 1.3em;
+  box-shadow: 0 0 16px #00ffe7a0, 0 0 8px #ff00e6a0;
+  border: 1.5px solid #00ffe780;
+  position: relative;
+  transition: box-shadow 0.2s, background 0.2s, border-color 0.2s;
+}
+
+.neon-event-item:not(:last-child)::after {
+  content: "";
+  display: block;
+  height: 2px;
+  background: linear-gradient(90deg, #00ffe7 0%, #ff00e6 100%);
+  margin: 1.5em 0 0 0;
+  border-radius: 1px;
+  opacity: 0.4;
+}
+
+.neon-event-item:hover {
+  box-shadow: 0 0 32px #ff00e6, 0 0 48px #00ffe7;
+  background: rgba(0,0,0,0.28);
+  border-color: #ff00e6cc;
+}
+
+.neon-event-title {
+  color: #ff00e6;
+  font-size: 1.2rem;
+  font-weight: bold;
+  text-shadow: 0 0 8px #ff00e6, 0 0 16px #00ffe7;
+  margin-bottom: 0.2em;
+  display: inline-block;
+}
+
+.neon-event-date {
+  color: #00ffe7;
+  font-weight: 500;
+  text-shadow: 0 0 6px #00ffe7;
+  margin-bottom: 0.2em;
+  display: inline-block;
+}
+
+.neon-event-btn {
+  color: #fff;
+  background: linear-gradient(90deg, #00ffe7 0%, #ff00e6 100%);
+  border: none;
+  font-weight: bold;
+  border-radius: 0.5rem;
+  box-shadow: 0 0 8px #00ffe7, 0 0 16px #ff00e6;
+  margin-right: 0.7em;
+  margin-top: 0.3em;
+  margin-bottom: 0.3em;
+  padding: 0.4em 1.1em;
+  transition: background 0.2s, color 0.2s, box-shadow 0.2s, transform 0.15s;
+}
+
+.neon-event-btn:hover, .neon-event-btn:focus {
+  color: #fff;
+  background: linear-gradient(90deg, #ff00e6 0%, #00ffe7 100%);
+  box-shadow: 0 0 16px #ff00e6, 0 0 32px #00ffe7;
+  transform: scale(1.04);
+}
+
+.neon-event-regcount {
+  color: #00ffe7;
+  font-weight: bold;
+  text-shadow: 0 0 6px #00ffe7, 0 0 12px #ff00e6;
+  margin-bottom: 0.5em;
+  display: inline-block;
+}
+
+/* Registration list popup for coordinators */
+.neon-event-registrations {
+  background: rgba(30, 0, 60, 0.97);
+  border-radius: 0.7rem;
+  box-shadow: 0 0 16px #00ffe7a0, 0 0 8px #ff00e6a0;
+  padding: 1em 1.2em;
+  margin-top: 1em;
+  color: #fff;
+  border: 1.5px solid #ff00e6a0;
+}
+
+.neon-event-registrations ul {
+  list-style: disc inside;
+  margin: 0.5em 0 0 1em;
+  padding: 0;
+}
+
+.neon-event-registrations li {
+  margin-bottom: 0.3em;
+  color: #00ffe7;
+  text-shadow: 0 0 4px #00ffe7a0;
+}
+
+/* Neon card box style for profile sections */
+.neon-profile-cardbox {
+  background: rgba(30, 0, 60, 0.97);
+  border-radius: 1.1rem;
+  box-shadow: 0 0 24px 2px #00ffe7a0, 0 0 12px 2px #ff00e6a0;
+  border: 1.5px solid #00ffe7cc;
+  padding: 1.3rem 1.1rem;
+  margin-bottom: 1.7rem;
+  transition: box-shadow 0.2s, border-color 0.2s;
+}
+
+.neon-profile-cardbox:hover {
+  box-shadow: 0 0 32px #ff00e6, 0 0 40px #00ffe7;
+  border-color: #ff00e6cc;
+}
+
+/* Distinct neon card style for main profile info */
+.neon-profile-mainbox {
+  background: linear-gradient(135deg, #0e1456 60%, #1a0033 100%);
+  border-radius: 1.2rem;
+  box-shadow: 0 0 32px 4px #00ffe7a0, 0 0 18px 2px #ff00e6a0;
+  border: 2.5px solid transparent;
+  border-image: linear-gradient(90deg, #00ffe7 0%, #ff00e6 100%);
+  border-image-slice: 1;
+  padding: 2.1rem 1.7rem 1.2rem 1.7rem;
+  margin-bottom: 2.2rem;
+  position: relative;
+  transition: box-shadow 0.2s, border-color 0.2s;
+}
+
+.neon-profile-mainbox .neon-profile-label {
+  font-size: 1.08rem;
+  letter-spacing: 0.5px;
+}
+
+.neon-profile-mainbox p {
+  color: #fff;
+  margin-bottom: 0.7em;
+  text-shadow: 0 0 6px #00ffe7a0;
+}
+
+.neon-profile-mainbox:before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: 1.2rem;
+  box-shadow: 0 0 32px 8px #00ffe7cc, 0 0 24px 8px #ff00e6cc;
+  opacity: 0.18;
+  z-index: 0;
+  pointer-events: none;
+}
+
+.neon-profile-mainbox .neon-profile-title {
+  margin-top: 0;
+  margin-bottom: 1.2rem;
+  font-size: 2.1rem;
+  text-align: left;
+  padding-left: 0.1em;
+  color: #00ffe7;
+  text-shadow: 0 0 5px #00ffe7, 0 0 10px #ff00e6, 0 0 20px #ff00e6;
+}
+
+@media (max-width: 600px) {
+  .neon-profile-card {
+    padding: 1.2rem 0.7rem;
+  }
+}
+
+@media (max-width: 800px) {
+  .neon-events-container {
+    padding: 1.2rem 0.5rem;
+  }
+}
