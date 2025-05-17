@@ -61,7 +61,7 @@ function NeonNavbar({ isLoggedIn, userRole }) {
                 </li>
                 <li className="nav-item">
                   <button
-                    className="nav-link neon-link btn btn-link p-0"
+                    className="nav-link neon-link neon-logout-btn btn btn-link p-0"
                     onClick={handleLogout}
                   >
                     Logout

@@ -98,55 +98,110 @@ function Profile() {
     setCreatedEvents((prev) => prev.filter((ev) => ev.id !== eventId));
   };
 
-  const handleLogout = async () => {
-    await logout();
-    navigate("/login");
-  };
-
   if (!user) return <p>Please login to view your profile.</p>;
+
+  // Get user initials for avatar
+  const getInitials = (email) => {
+    return email
+      .split('@')[0]
+      .split('.')
+      .map(name => name[0].toUpperCase())
+      .join('');
+  };
 
   return (
     <div className="profile-bg min-vh-100 d-flex align-items-center justify-content-center">
-      <div className="neon-profile-card">
-        <div className="neon-profile-mainbox">
-          <h2 className="neon-profile-title">Your Profile</h2>
-          <p><span className="neon-profile-label">Email:</span> {user.email}</p>
-          <p><span className="neon-profile-label">Role:</span> {role}</p>
+      <div className="neon-events-container" style={{ maxWidth: 700, width: '100%', margin: '2rem auto', padding: '2.5rem 2rem' }}>
+        <div className="neon-profile-mainbox" style={{ marginBottom: '2.2rem', textAlign: 'center' }}>
+          <div className="neon-profile-avatar">
+            {getInitials(user.email)}
+          </div>
+          <h2 className="neon-profile-title">{user.email.split('@')[0]}</h2>
+          <div style={{ display: 'flex', justifyContent: 'center', gap: '2rem', marginTop: '1.5rem' }}>
+            <div>
+              <span className="neon-profile-label">EMAIL</span>
+              <p style={{ marginTop: '0.5rem' }}>{user.email}</p>
+            </div>
+            <div>
+              <span className="neon-profile-label">ROLE</span>
+              <p style={{ marginTop: '0.5rem' }}>{role.charAt(0).toUpperCase() + role.slice(1)}</p>
+            </div>
+          </div>
         </div>
-        <hr className="neon-section-divider" />
-
+        
+        <hr className="neon-section-divider" style={{ background: 'linear-gradient(90deg, #00ffe7 0%, #ff00e6 100%)', height: '2px', opacity: 0.6 }} />
+        
         {role === "user" && (
           <div className="neon-profile-cardbox">
-            <h3 className="neon-text mb-3" style={{fontSize: '1.3rem'}}>Your Registered Events</h3>
+            <h3 className="neon-text mb-4" style={{fontSize: '1.5rem', color: '#00ffe7', textShadow: '0 0 8px #00ffe7, 0 0 16px #ff00e6', fontWeight: 'bold', textAlign: 'center'}}>
+              <i className="bi bi-calendar-check" style={{marginRight: '10px'}}></i>
+              Your Registered Events
+            </h3>
             {loadingRegistered ? (
-              <p>Loading...</p>
+              <div className="text-center">
+                <div className="spinner-border text-info" role="status">
+                  <span className="visually-hidden">Loading...</span>
+                </div>
+              </div>
             ) : registeredEvents.length === 0 ? (
-              <p>You have not registered for any events yet.</p>
+              <div className="text-center" style={{color: '#ff00e6', textShadow: '0 0 6px #ff00e6'}}>
+                <i className="bi bi-calendar-x" style={{fontSize: '2rem', marginBottom: '1rem', display: 'block'}}></i>
+                <p>You have not registered for any events yet.</p>
+              </div>
             ) : (
               <ul className="neon-profile-list">
-                {registeredEvents.map(ev => (
-                  <li key={ev.id}>
-                    <strong>{ev.title}</strong> <br />
-                    {ev.description} <br />
-                    <span className="neon-profile-label">Date:</span> {new Date(ev.date.seconds ? ev.date.seconds * 1000 : ev.date).toLocaleString()}
+                {registeredEvents.map((ev, index) => (
+                  <li key={ev.id} style={{
+                    background: `linear-gradient(135deg, rgba(${index * 30 % 255}, ${index * 50 % 255}, ${index * 70 % 255}, 0.6), rgba(${index * 40 % 255}, ${index * 60 % 255}, ${index * 80 % 255}, 0.6))`, // Dynamic colorful background
+                    borderRadius: '1rem',
+                    padding: '1.2rem',
+                    marginBottom: '1rem',
+                    boxShadow: `0 0 15px rgba(${index * 30 % 255}, ${index * 50 % 255}, ${index * 70 % 255}, 0.4)`,
+                    border: `1px solid rgba(${index * 40 % 255}, ${index * 60 % 255}, ${index * 80 % 255}, 0.3)`,
+                    transition: 'all 0.3s ease'
+                  }}>
+                    <h4 style={{color: '#00ffe7', textShadow: '0 0 8px #00ffe7', marginBottom: '0.5rem'}}>{ev.title}</h4>
+                    <p style={{color: '#fff', opacity: 0.9, marginBottom: '0.5rem'}}>{ev.description}</p>
+                    <div style={{display: 'flex', alignItems: 'center', color: '#ff00e6', fontSize: '0.9rem'}}>
+                      <i className="bi bi-clock" style={{marginRight: '6px'}}></i>
+                      {new Date(ev.date.seconds ? ev.date.seconds * 1000 : ev.date).toLocaleString()}
+                    </div>
                   </li>
                 ))}
               </ul>
             )}
           </div>
         )}
-
+        
         {role === "coordinator" && (
           <div className="neon-profile-cardbox">
-            <h3 className="neon-text mb-3" style={{fontSize: '1.3rem'}}>Events You Created</h3>
+            <h3 className="neon-text mb-4" style={{fontSize: '1.5rem', color: '#00ffe7', textShadow: '0 0 8px #00ffe7, 0 0 16px #ff00e6', fontWeight: 'bold', textAlign: 'center'}}>
+              <i className="bi bi-calendar-plus" style={{marginRight: '10px'}}></i>
+              Events You Created
+            </h3>
             {loadingCreated ? (
-              <p>Loading...</p>
+              <div className="text-center">
+                <div className="spinner-border text-info" role="status">
+                  <span className="visually-hidden">Loading...</span>
+                </div>
+              </div>
             ) : createdEvents.length === 0 ? (
-              <p>You have not created any events yet.</p>
+              <div className="text-center" style={{color: '#ff00e6', textShadow: '0 0 6px #ff00e6'}}>
+                <i className="bi bi-calendar-x" style={{fontSize: '2rem', marginBottom: '1rem', display: 'block'}}></i>
+                <p>You have not created any events yet.</p>
+              </div>
             ) : (
               <ul className="neon-profile-list">
-                {createdEvents.map(ev => (
-                  <li key={ev.id}>
+                {createdEvents.map((ev, index) => (
+                  <li key={ev.id} style={{
+                    background: `linear-gradient(135deg, rgba(${index * 50 % 255}, ${index * 70 % 255}, ${index * 30 % 255}, 0.6), rgba(${index * 60 % 255}, ${index * 80 % 255}, ${index * 40 % 255}, 0.6))`, // Dynamic colorful background
+                    borderRadius: '1rem',
+                    padding: '1.2rem',
+                    marginBottom: '1rem',
+                    boxShadow: `0 0 15px rgba(${index * 50 % 255}, ${index * 70 % 255}, ${index * 30 % 255}, 0.4)`,
+                    border: `1px solid rgba(${index * 60 % 255}, ${index * 80 % 255}, ${index * 40 % 255}, 0.3)`,
+                    transition: 'all 0.3s ease'
+                  }}>
                     {editingEventId === ev.id ? (
                       <form
                         onSubmit={e => {
@@ -180,16 +235,31 @@ function Profile() {
                           required
                           className="form-control neon-input mb-2"
                         />
-                        <button type="submit" className="neon-profile-btn">Save</button>
-                        <button type="button" className="neon-profile-btn" onClick={() => setEditingEventId(null)}>Cancel</button>
+                        <div style={{display: 'flex', gap: '10px'}}>
+                          <button type="submit" className="neon-profile-btn">
+                            <i className="bi bi-check-circle" style={{marginRight: '5px'}}></i>Save
+                          </button>
+                          <button type="button" className="neon-profile-btn" onClick={() => setEditingEventId(null)}>
+                            <i className="bi bi-x-circle" style={{marginRight: '5px'}}></i>Cancel
+                          </button>
+                        </div>
                       </form>
                     ) : (
                       <>
-                        <strong>{ev.title}</strong> <br />
-                        {ev.description} <br />
-                        <span className="neon-profile-label">Date:</span> {new Date(ev.date.seconds ? ev.date.seconds * 1000 : ev.date).toLocaleString()} <br />
-                        <button className="neon-profile-btn" onClick={() => handleEditStart(ev)}>Edit</button>
-                        <button className="neon-profile-btn" onClick={() => handleDelete(ev.id)}>Delete</button>
+                        <h4 style={{color: '#00ffe7', textShadow: '0 0 8px #00ffe7', marginBottom: '0.5rem'}}>{ev.title}</h4>
+                        <p style={{color: '#fff', opacity: 0.9, marginBottom: '0.5rem'}}>{ev.description}</p>
+                        <div style={{display: 'flex', alignItems: 'center', color: '#ff00e6', fontSize: '0.9rem', marginBottom: '1rem'}}>
+                          <i className="bi bi-clock" style={{marginRight: '6px'}}></i>
+                          {new Date(ev.date.seconds ? ev.date.seconds * 1000 : ev.date).toLocaleString()}
+                        </div>
+                        <div style={{display: 'flex', gap: '10px'}}>
+                          <button className="neon-profile-btn" onClick={() => handleEditStart(ev)}>
+                            <i className="bi bi-pencil" style={{marginRight: '5px'}}></i>Edit
+                          </button>
+                          <button className="neon-profile-btn" onClick={() => handleDelete(ev.id)} style={{background: 'linear-gradient(90deg, #ff0033 0%, #ff00e6 100%)'}}>
+                            <i className="bi bi-trash" style={{marginRight: '5px'}}></i>Delete
+                          </button>
+                        </div>
                       </>
                     )}
                   </li>

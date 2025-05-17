@@ -63,6 +63,27 @@
   border-radius: 2px;
 }
 
+/* Ensure Logout button is vertically centered and styled like links */
+.neon-logout-btn {
+  display: flex !important;
+  align-items: center !important;
+  height: 100%;
+  padding: 0 1rem !important;
+  color: #fff !important;
+  background: none !important;
+  border: none;
+  font-weight: 500;
+  text-shadow: 0 0 8px #00ffe7a0;
+  transition: color 0.2s, text-shadow 0.2s;
+  box-shadow: none;
+}
+
+.neon-logout-btn:hover, .neon-logout-btn:focus {
+  color: #00ffe7 !important;
+  text-shadow: 0 0 12px #ff00e6, 0 0 6px #00ffe7;
+  background: none !important;
+}
+
 @media (max-width: 991px) {
   .neon-navbar-brand {
     font-size: 1.15rem;
