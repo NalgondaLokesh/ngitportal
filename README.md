@@ -1,4 +1,6 @@
-# Getting Started with Create React App
+# Club Sync
+
+Club Sync is a web application designed to help manage club events. It allows users to view upcoming events, register for them, and for coordinators to create and manage events.
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
@@ -68,3 +70,9 @@ This section has moved here: [https://facebook.github.io/create-react-app/docs/d
 ### `npm run build` fails to minify
 
 This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+
+## Connect with Me
+
+- GitHub: [Your GitHub Profile](https://github.com/NalgondaLokesh)
+- LinkedIn: [Your LinkedIn Profile](https://www.linkedin.com/in/nalgondalokesh/)
+- Instagram: (https://www.instagram.com/nalgondalokesh.ai/)
