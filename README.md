@@ -75,4 +75,4 @@ This section has moved here: [https://facebook.github.io/create-react-app/docs/t
 
 - GitHub: [Your GitHub Profile](https://github.com/NalgondaLokesh)
 - LinkedIn: [Your LinkedIn Profile](https://www.linkedin.com/in/nalgondalokesh/)
-- Instagram: (https://www.instagram.com/nalgondalokesh.ai/)
+- Instagram: [Your Instagram Profile](https://www.instagram.com/nalgondalokesh.ai/)
