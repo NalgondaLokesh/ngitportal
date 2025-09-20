@@ -22,7 +22,8 @@ function NeonNavbar({ isLoggedIn, userRole }) {
     <nav className="navbar navbar-expand-lg neon-navbar">
       <div className="container">
         <Link className="navbar-brand neon-navbar-brand" to="/">
-          <i className="bi bi-lightning-charge-fill"></i> Campus Portal
+          <img src="/ngitlogo.png" alt="NGIT Portal Logo" style={{height: "50px", width: "50px", marginRight: "10px"}} />
+          NGIT Portal
         </Link>
         <button
           className="navbar-toggler neon-toggler"
@@ -59,6 +60,7 @@ function NeonNavbar({ isLoggedIn, userRole }) {
                     Profile
                   </Link>
                 </li>
+                
                 <li className="nav-item">
                   <button
                     className="nav-link neon-link neon-logout-btn btn btn-link p-0"

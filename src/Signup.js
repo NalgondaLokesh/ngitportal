@@ -6,11 +6,17 @@ import { auth, db } from "./firebase";
 import "./Signup.css";
 
 function Signup() {
+  const [name, setName] = useState("");
+  const [uniqueId, setUniqueId] = useState("");
+  const [year, setYear] = useState("");
+  const [branch, setBranch] = useState("");
+  const [section, setSection] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [confirm, setConfirm] = useState("");
   const [error, setError] = useState("");
   const [isCoordinator, setIsCoordinator] = useState(false);
+  const [nkey, setNkey] = useState("");
   const [success, setSuccess] = useState("");
   const navigate = useNavigate();
 
@@ -18,6 +24,12 @@ function Signup() {
     e.preventDefault();
     setError("");
     setSuccess("");
+
+    if (isCoordinator && nkey !== "2455") {
+      setError("Invalid Coordinator Key.");
+      return;
+    }
+
     if (password !== confirm) {
       setError("Passwords do not match.");
       return;
@@ -27,6 +39,11 @@ function Signup() {
       const userCredential = await createUserWithEmailAndPassword(auth, email, password);
       // Save user role to Firestore (user or coordinator)
       await setDoc(doc(db, "users", userCredential.user.uid), {
+        name,
+        uniqueId,
+        year,
+        branch,
+        section,
         email: userCredential.user.email,
         role: isCoordinator ? "coordinator" : "user"
       });
@@ -37,6 +54,13 @@ function Signup() {
     }
   };
 
+  let sections = [];
+  if (branch === 'CSE') {
+    sections = ['A', 'B', 'C', 'D', 'E'];
+  } else if (branch === 'CSM') {
+    sections = ['A', 'B'];
+  }
+
   return (
     <div className="signup-bg min-vh-100 d-flex align-items-center justify-content-center">
       <div className="neon-signup-card p-4">
@@ -44,6 +68,45 @@ function Signup() {
         {error && <div className="alert alert-danger py-2">{error}</div>}
         {success && <div className="alert alert-success neon-success-popup py-2 text-center">{success}</div>}
         <form onSubmit={handleSubmit}>
+          <div className="mb-3">
+            <label className="form-label neon-subtext" htmlFor="name">Name</label>
+            <input className="form-control neon-input"
+              type="text" id="name" value={name} required
+              onChange={e => setName(e.target.value)} placeholder="Enter your name" />
+          </div>
+          <div className="mb-3">
+            <label className="form-label neon-subtext" htmlFor="uniqueId">Unique ID</label>
+            <input className="form-control neon-input"
+              type="text" id="uniqueId" value={uniqueId} required
+              onChange={e => setUniqueId(e.target.value)} placeholder="Enter your unique ID" />
+          </div>
+          <div className="mb-3">
+            <label className="form-label neon-subtext" htmlFor="year">Year</label>
+            <select className="form-control neon-input" id="year" value={year} required onChange={e => setYear(e.target.value)}>
+              <option value="">Select Year</option>
+              <option value="1">1</option>
+              <option value="2">2</option>
+              <option value="3">3</option>
+              <option value="4">4</option>
+            </select>
+          </div>
+          <div className="mb-3">
+            <label className="form-label neon-subtext" htmlFor="branch">Branch</label>
+            <select className="form-control neon-input" id="branch" value={branch} required onChange={e => { setBranch(e.target.value); setSection(''); }}>
+              <option value="">Select Branch</option>
+              <option value="CSE">CSE</option>
+              <option value="CSM">CSM</option>
+            </select>
+          </div>
+          {branch && (
+            <div className="mb-3">
+              <label className="form-label neon-subtext" htmlFor="section">Section</label>
+              <select className="form-control neon-input" id="section" value={section} required onChange={e => setSection(e.target.value)}>
+                <option value="">Select Section</option>
+                {sections.map(s => <option key={s} value={s}>{s}</option>)}
+              </select>
+            </div>
+          )}
           <div className="mb-3">
             <label className="form-label neon-subtext" htmlFor="email">Email</label>
             <input className="form-control neon-input"
@@ -74,6 +137,14 @@ function Signup() {
               Register as Coordinator
             </label>
           </div>
+          {isCoordinator && (
+            <div className="mb-3">
+              <label className="form-label neon-subtext" htmlFor="nkey">NKEY</label>
+              <input className="form-control neon-input"
+                type="password" id="nkey" value={nkey} required
+                onChange={e => setNkey(e.target.value)} placeholder="Enter Coordinator Key" />
+            </div>
+          )}
           <button type="submit" className="btn btn-neon w-100 mb-2">
             Sign Up
           </button>

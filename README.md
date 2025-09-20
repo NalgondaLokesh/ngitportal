@@ -12,3 +12,8 @@ Club Sync is a web application designed to help manage club events. It allows us
 
 ## 📄 License
 This project is licensed under the MIT License - see the [LICENSE](./LICENSE) file for details.
+
+## Firebase Setup
+
+This project uses Firebase for authentication, database, and storage. For more information on how to set up Firebase, see the [Firebase Setup](./firebase-setup.md) file.
+

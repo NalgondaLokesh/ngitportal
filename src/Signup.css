@@ -7,8 +7,8 @@
 .neon-signup-card {
   background: rgba(20, 0, 50, 0.98);
   border-radius: 1.5rem;
-  box-shadow: 0 0 32px 3px #00ffe7a0, 0 0 16px 2px #ff00e6a0;
-  max-width: 400px;
+  box-shadow: 0 0 40px 5px #00ffe7a0, 0 0 20px 3px #ff00e6a0;
+  max-width: 450px;
   width: 100%;
   margin: 2rem;
   animation: neon-border 2.5s infinite alternate;
@@ -16,15 +16,15 @@
 
 .neon-text {
   color: #00ffe7;
-  text-shadow: 0 0 5px #00ffe7, 0 0 10px #ff00e6, 0 0 20px #ff00e6;
+  text-shadow: 0 0 8px #00ffe7, 0 0 15px #ff00e6, 0 0 25px #ff00e6;
   font-family: 'Orbitron', 'Segoe UI', sans-serif;
   letter-spacing: 2px;
 }
 
 .neon-subtext {
   color: #f0f0f0;
-  text-shadow: 0 0 8px #00ffe7a0;
-  font-size: 1.07rem;
+  text-shadow: 0 0 10px #00ffe7a0;
+  font-size: 1.1rem;
 }
 
 .neon-input {
@@ -32,13 +32,13 @@
   color: #fff;
   border: 1.5px solid #00ffe7;
   border-radius: 0.5rem;
-  box-shadow: 0 0 5px #00ffe7a0 inset;
+  box-shadow: 0 0 8px #00ffe7a0 inset;
   transition: border-color 0.2s, box-shadow 0.2s;
 }
 
 .neon-input:focus {
   border-color: #ff00e6;
-  box-shadow: 0 0 16px #ff00e6a0, 0 0 32px #00ffe7a0;
+  box-shadow: 0 0 20px #ff00e6a0, 0 0 40px #00ffe7a0;
   background: #151a49;
   color: #fff;
 }
@@ -48,7 +48,7 @@
   background: linear-gradient(90deg, #00ffe7 0%, #ff00e6 100%);
   border: none;
   font-weight: bold;
-  box-shadow: 0 0 8px #00ffe7, 0 0 16px #ff00e6;
+  box-shadow: 0 0 12px #00ffe7, 0 0 24px #ff00e6;
   transition: background 0.2s, color 0.2s, box-shadow 0.2s, transform 0.15s;
 }
 

@@ -57,8 +57,8 @@
   display: block;
   height: 3px;
   width: 100%;
-  background: linear-gradient(90deg,#00ffe7 0%,#ff00e6 100%);
-  box-shadow: 0 0 8px #00ffe7, 0 0 4px #ff00e6;
+  background: #FFD700; /* Changed to gold */
+  box-shadow: 0 0 8px #FFD700, 0 0 4px #FFD700;
   margin: 0.3em 0;
   border-radius: 2px;
 }
@@ -91,5 +91,38 @@
   .neon-link {
     margin-left: 0.5rem;
     margin-right: 0.5rem;
+  }
+}
+
+.neon-events-title {
+  font-size: 2rem; /* Slightly smaller font size */
+  font-weight: bold;
+  text-align: center;
+  margin-top: 2rem; /* Space from navbar */
+  margin-bottom: 1.5rem; /* Space below title */
+  color: #00ffe7; /* Neon blue color */
+  text-shadow:
+    0 0 5px #00ffe7,
+    0 0 10px #00ffe7,
+    0 0 15px #ff00e6,
+    0 0 20px #ff00e6; /* Stronger neon glow */
+  letter-spacing: 2px;
+  animation: pulse-text 2s infinite alternate; /* Add a subtle pulse animation */
+}
+
+@keyframes pulse-text {
+  0% {
+    text-shadow:
+      0 0 5px #00ffe7,
+      0 0 10px #00ffe7,
+      0 0 15px #ff00e6,
+      0 0 20px #ff00e6;
+  }
+  100% {
+    text-shadow:
+      0 0 8px #00ffe7,
+      0 0 13px #00ffe7,
+      0 0 18px #ff00e6,
+      0 0 23px #ff00e6;
   }
 }

@@ -8,7 +8,7 @@ function Home() {
       {/* Hero Section */}
       <section className="py-5 neon-overlay text-center">
         <div className="container">
-          <h1 className="display-3 fw-bold neon-text mb-3">Campus Event Portal</h1>
+          <h1 className="display-3 fw-bold neon-text mb-3">NGIT Events Portal</h1>
           <p className="lead neon-subtext mb-4">
             Discover, register, and participate in the latest events on campus.<br/>
             <span className="neon-highlight">Workshops, Seminars, Fun Activities – All in one place!</span>
